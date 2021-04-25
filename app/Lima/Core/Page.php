@@ -21,7 +21,7 @@ class Page {
     }
 
     public function getPageData($page) {
-        $pageDataFile = PUBLIC_ROOT . '/pages/' . $page . '.json';
+        $pageDataFile = BASE_ROOT . '/public/pages/' . $page . '.json';
 
         if (!file_exists($pageDataFile)) {
             return false;
@@ -35,7 +35,7 @@ class Page {
         $templateFile = $this->getThemeFile($file . '.php');
 
         if (!$templateFile) {
-            return false;
+            return $this->loadHtml('404');
         }
 
         extract($data);
@@ -48,6 +48,22 @@ class Page {
         return $html;
     }
 
+    public function renderContents($contentData) {
+        $contentsHtml = '';
+
+        foreach ($contentData as $cData) {
+            $type = ucfirst($cData['type']);
+            unset($cData['type']);
+
+            $class = '\Lima\UI\\' . $type;
+            $element = new $class($cData);
+
+            $contentsHtml .= $element->render();
+        }
+
+        return $contentsHtml;
+    }
+
     public function view($pageName) {
         $pageData = $this->getPageData($pageName);
 
@@ -55,8 +71,11 @@ class Page {
             $html = $this->loadHtml('404');
         }
         else {
-            $pageTemplate = $pageData['template'];
-            $html = $this->loadHtml($pageTemplate, $pageData['page_contents']);
+            $pageTemplate = !empty($pageData['template']) ? $pageData['template'] : 'page';
+            $pageContents = $this->renderContents($pageData['page_contents']);
+            $data = ['page_contents' => $pageContents];
+
+            $html = $this->loadHtml($pageTemplate, $data);
         }
 
         return $html;
