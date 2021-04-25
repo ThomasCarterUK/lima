@@ -4,10 +4,20 @@ namespace Lima\Core;
 
 class App {
     protected $defaultPage = 'home';
+    protected $enviroment = 'production';
 
     public function __construct() {
         $config = $this->loadConfig();
         $url = $this->parseURL();
+
+        if (!empty($config['environment'])) {
+            $this->environment = $config['environment'];
+        }
+
+        if ($this->environment == 'development') {
+            ini_set('display_errors', 'on');
+            error_reporting(E_ALL);
+        }
 
         if (!empty($config['home'])) $this->defaultPage = $config['home'];
 
