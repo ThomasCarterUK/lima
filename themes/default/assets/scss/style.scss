@@ -1,1 +1,87 @@
 @use './base.scss';
+
+/* ===== GLOBAL ===== */
+
+$theme: #52B3D9;
+$theme2: #F2421B;
+
+h1, h2, h3, h4, h5, h6 {
+    &:first-child {
+        margin-top: 0;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+h1 { font-size: 32pt; }
+h2 { font-size: 28pt; }
+h3 { font-size: 24pt; }
+h4 { font-size: 20pt; }
+h5 { font-size: 17pt; }
+h6 { font-size: 14pt; }
+
+p {
+    margin-top: 0;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+a {
+    color: $theme2;
+    text-decoration: none;
+}
+
+/* ===== HEADER ===== */
+
+.site-header {
+    padding: 20px 0;
+    background-color: $theme;
+
+    .header-container {
+        display: flex;
+        align-items: center;
+
+        .header-right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+    }
+
+    .logo {
+        margin-bottom: 5px;
+
+        .logo-text {
+            font-size: 34pt;
+        }
+    }
+
+    .slogan {
+        font-size: 12pt;
+    }
+}
+/* ===== CONTENTS ===== */
+
+.content-wrap {
+    padding: 100px 0;
+}
+
+/* ===== FOOTER ===== */
+
+.site-footer {
+    background-color: $theme;
+
+    .footer-top {
+        padding: 40px 0;
+    }
+
+    .footer-copyright {
+        padding: 15px;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+}

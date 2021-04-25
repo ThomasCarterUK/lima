@@ -1,3 +1,4 @@
+/* ===== GLOBAL ===== */
 body {
   margin: 0;
   padding: 0;
@@ -13,7 +14,135 @@ body {
 .container {
   margin: 0 auto;
   width: 90%;
-  max-width: 1300px;
+  max-width: 1200px;
+}
+
+/* ===== IMAGE ===== */
+img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* ===== FORM AND INPUT ===== */
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 8px 15px;
+  border: 1px solid #ccc;
+  outline: 0;
+  border-radius: 5px;
+}
+
+input[type=submit], button {
+  width: auto;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+input[type=submit]:hover, button:hover {
+  background-color: red;
+}
+
+.form-row + .form-row {
+  margin-top: 20px;
+}
+
+.form-submit-row {
+  text-align: right;
+}
+
+/* ===== GLOBAL ===== */
+h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+  margin-top: 0;
+}
+h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child {
+  margin-bottom: 0;
+}
+
+h1 {
+  font-size: 32pt;
+}
+
+h2 {
+  font-size: 28pt;
+}
+
+h3 {
+  font-size: 24pt;
+}
+
+h4 {
+  font-size: 20pt;
+}
+
+h5 {
+  font-size: 17pt;
+}
+
+h6 {
+  font-size: 14pt;
+}
+
+p {
+  margin-top: 0;
+}
+p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: #F2421B;
+  text-decoration: none;
+}
+
+/* ===== HEADER ===== */
+.site-header {
+  padding: 20px 0;
+  background-color: #52B3D9;
+}
+.site-header .header-container {
+  display: flex;
+  align-items: center;
+}
+.site-header .header-container .header-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.site-header .logo {
+  margin-bottom: 5px;
+}
+.site-header .logo .logo-text {
+  font-size: 34pt;
+}
+.site-header .slogan {
+  font-size: 12pt;
+}
+
+/* ===== CONTENTS ===== */
+.content-wrap {
+  padding: 100px 0;
+}
+
+/* ===== FOOTER ===== */
+.site-footer {
+  background-color: #52B3D9;
+}
+.site-footer .footer-top {
+  padding: 40px 0;
+}
+.site-footer .footer-copyright {
+  padding: 15px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 /*# sourceMappingURL=style.css.map */
