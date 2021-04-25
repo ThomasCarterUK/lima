@@ -17,4 +17,8 @@ class Config {
 
         return $jsonArray;
     }
+
+    public static function LoadSiteConfig() {
+        return self::LoadJsonFile(BASE_ROOT . '/config.json');
+    }
 }

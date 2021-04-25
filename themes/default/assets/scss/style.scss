@@ -63,6 +63,38 @@ a {
     .slogan {
         font-size: 12pt;
     }
+
+    .nav-menu {
+        .menu {
+            margin: 0;
+            padding: 0;
+
+            li {
+                display: inline-block;
+
+                & + li {
+                    margin-left: 15px;
+                }
+
+                a {
+                    display: block;
+                    padding: 6px 15px;
+
+                    &:hover {
+                        background-color: $theme2;
+                        color: white;
+                    }
+                }
+
+                &.active-item {
+                    a {
+                        background-color: $theme2;
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
 }
 /* ===== CONTENTS ===== */
 

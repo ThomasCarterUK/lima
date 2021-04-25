@@ -9,5 +9,8 @@
     ],
     "scripts": [
         "assets/js/jquery.min.js"
+    ],
+    "menu_locations": [
+        "header", "footer", "sidebar"
     ]
 }

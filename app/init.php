@@ -3,6 +3,8 @@
 define("BASE_ROOT", dirname(__DIR__));
 define("THEMES", BASE_ROOT . '/themes'. DIRECTORY_SEPARATOR);
 
+
+
 spl_autoload_register(function ($class) {
     $class = str_replace('\\', DIRECTORY_SEPARATOR, $class);
     $coreFile = BASE_ROOT  . "/app/" . $class . ".php";

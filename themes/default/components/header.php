@@ -6,8 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo SITE_TITLE; ?></title>
 
-    <?php echo $theme_styles; ?>
-    <?php echo $theme_scripts; ?>
+    <?php
+
+    $this->themeStyles();
+    $this->themeScripts();
+
+    ?>
 </head>
 <body>
     <div class="site-wrapper">
@@ -22,7 +26,7 @@
                     </div>
                 </div>
                 <div class="header-right">
-
+                    <?php $this->menuLocation('header'); ?>
                 </div>
             </div>
         </div>

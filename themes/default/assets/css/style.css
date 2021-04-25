@@ -126,6 +126,28 @@ a {
 .site-header .slogan {
   font-size: 12pt;
 }
+.site-header .nav-menu .menu {
+  margin: 0;
+  padding: 0;
+}
+.site-header .nav-menu .menu li {
+  display: inline-block;
+}
+.site-header .nav-menu .menu li + li {
+  margin-left: 15px;
+}
+.site-header .nav-menu .menu li a {
+  display: block;
+  padding: 6px 15px;
+}
+.site-header .nav-menu .menu li a:hover {
+  background-color: #F2421B;
+  color: white;
+}
+.site-header .nav-menu .menu li.active-item a {
+  background-color: #F2421B;
+  color: white;
+}
 
 /* ===== CONTENTS ===== */
 .content-wrap {

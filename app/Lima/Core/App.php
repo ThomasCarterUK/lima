@@ -23,6 +23,8 @@ class App {
 
         $page = !empty($url) ? $url[0] : $this->defaultPage;
 
+        define('CURRENT_PAGE', $page);
+
         $pageRenderer = new Page($config);
         echo $pageRenderer->view($page);
     }

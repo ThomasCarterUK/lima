@@ -46,7 +46,7 @@ class Theme {
 
         }
 
-        return $styleHtml;
+        echo $styleHtml;
     }
 
     public function themeScripts() {
@@ -68,7 +68,19 @@ class Theme {
             }
         }
 
-        return $scriptsHtml;
+        echo $scriptsHtml;
+    }
+
+    public function menuLocation($location) {
+        $siteConfig = \Lima\Core\Config::LoadSiteConfig();
+        $menuItems = !empty($siteConfig['menus'][$location]) ? $siteConfig['menus'][$location] : null;
+
+        if (empty($menuItems)) {
+            return;
+        }
+
+        $navMenu = new NavMenu($menuItems);
+        echo $navMenu->render();
     }
 
     public function renderComponent($componentName, $data = []) {
@@ -81,9 +93,7 @@ class Theme {
         $templatePath = $this->themeDir . '/' . $templateFile . '.php';
 
         $defaultData = [
-            'theme_version' => $this->themeConfig['version'],
-            'theme_styles' => $this->themeStyles(),
-            'theme_scripts' => $this->themeScripts()
+            'theme_version' => $this->themeConfig['version']
         ];
 
         $data = array_merge($defaultData, $data);
