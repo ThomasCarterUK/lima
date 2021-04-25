@@ -31,19 +31,11 @@ class Page {
         return $pageData;
     }
 
-    public function loadHtml($file, $data = []) {
-        $templateFile = $this->getThemeFile($file . '.php');
+    public function loadHtml($template, $data = []) {
+        $theme = new \Lima\UI\Theme($this->config['theme']);
 
-        if (!$templateFile) {
-            return $this->loadHtml('404');
-        }
-
-        extract($data);
-
-        ob_start();
-        require($templateFile);
-        $html = ob_get_contents();
-        ob_end_clean();
+        $headerFooter = !empty($data['header_footer']) ? $data['header_footer'] : true;
+        $html = $theme->renderTemplate($template, $data, $headerFooter);
 
         return $html;
     }
@@ -73,9 +65,9 @@ class Page {
         else {
             $pageTemplate = !empty($pageData['template']) ? $pageData['template'] : 'page';
             $pageContents = $this->renderContents($pageData['page_contents']);
-            $data = ['page_contents' => $pageContents];
+            $pageData['page_contents'] = $pageContents;
 
-            $html = $this->loadHtml($pageTemplate, $data);
+            $html = $this->loadHtml($pageTemplate, $pageData);
         }
 
         return $html;

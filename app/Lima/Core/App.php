@@ -36,6 +36,9 @@ class App {
             exit;
         }
 
+        define('SITE_TITLE', $configArray['name']);
+        define('SITE_DESCRIPTION', $configArray['description']);
+
         return $configArray;
     }
 

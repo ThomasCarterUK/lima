@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.container {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1300px;
+}
+
+/*# sourceMappingURL=base.css.map */

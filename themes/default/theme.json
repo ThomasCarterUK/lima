@@ -1,0 +1,8 @@
+{
+    "name": "Default",
+    "description": "Default theme included with Lima",
+    "version": "1.0",
+    "styles": [
+        "assets/css/style.css"
+    ]
+}

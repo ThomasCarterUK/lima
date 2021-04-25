@@ -10,8 +10,7 @@ spl_autoload_register(function ($class) {
     if (file_exists($coreFile)) include $coreFile;
 });
 
-// Get root path for frontend
-$publicRoot = "https://" . $_SERVER['HTTP_HOST'] . str_replace($_SERVER['DOCUMENT_ROOT'], "" , str_replace("\\", "/'", BASE_ROOT) . '/public');
-define("PUBLIC_ROOT", $publicRoot);
+define('BASE_URL', "http://" . $_SERVER['HTTP_HOST'] . str_replace($_SERVER['DOCUMENT_ROOT'], "" , str_replace("\\", "/'", BASE_ROOT)));
+define("PUBLIC_ROOT", BASE_URL . '/public');
 
 ?>
