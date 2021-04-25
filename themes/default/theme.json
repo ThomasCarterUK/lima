@@ -3,6 +3,11 @@
     "description": "Default theme included with Lima",
     "version": "1.0",
     "styles": [
+        { "rel": "preconnect", "location": "external", "href": "https://fonts.gstatic.com" },
+        { "location": "external", "href": "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" },
         "assets/css/style.css"
+    ],
+    "scripts": [
+        "assets/js/jquery.min.js"
     ]
 }

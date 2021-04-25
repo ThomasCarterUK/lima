@@ -7,6 +7,7 @@
     <title><?php echo SITE_TITLE; ?></title>
 
     <?php echo $theme_styles; ?>
+    <?php echo $theme_scripts; ?>
 </head>
 <body>
     <div class="site-wrapper">

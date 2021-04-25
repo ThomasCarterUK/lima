@@ -19,8 +19,31 @@ class Theme {
         $styleHtml = '';
 
         foreach ($styles as $style) {
-            $styleUrl = BASE_URL . '/themes/' . $this->themeName . '/' . $style;
-            $styleHtml .= '<link rel="stylesheet" type="text/css" href="' . $styleUrl . '" />';
+            if (is_array($style)) {
+                $rel = !empty($style['rel']) ? $style['rel'] : 'stylesheet';
+                $location = !empty($style['location']) ? $style['location'] : 'local';
+                $type = !empty($style['type']) ? $style['type'] : 'text/css';
+                $href = !empty($style['href']) ? $style['href'] : null;
+
+                if (empty($href)) continue;
+
+                if ($rel != 'stylesheet') $type = null;
+
+                $styleUrl = $location == 'external' ? $href : BASE_URL . '/themes/' . $this->themeName . '/' . $href . '?v=' . $this->themeConfig['version'];
+
+                $styleHtml .= '<link rel="' . $rel . '" ';
+
+                if (!empty($type)) {
+                    $styleHtml .= 'type="' . $type . '" ';
+                }
+
+                $styleHtml .= 'href="' . $styleUrl . '" />';
+            }
+            else {
+                $styleUrl = BASE_URL . '/themes/' . $this->themeName . '/' . $style . '?v=' . $this->themeConfig['version'];
+                $styleHtml .= '<link rel="stylesheet" type="text/css" href="' . $styleUrl . '" />';
+            }
+
         }
 
         return $styleHtml;
@@ -31,8 +54,18 @@ class Theme {
         $scriptsHtml = '';
 
         foreach ($scripts as $script) {
-            $scriptUrl = BASE_URL . '/themes/' . $this->themeName . '/' . $script;
-            $styleHtml .= '<script type="text/javascript" src="' . $scriptUrl . '"></script>';
+            if (is_array($script)) {
+                $location = !empty($script['location']) ? $script['location'] : 'local';
+                $type = !empty($script['type']) ? $script['type'] : 'text/javascript';
+                $src = !empty($script['src']) ? $script['src'] : null;
+
+                $scriptUrl = $location == 'external' ? $src : BASE_URL . '/themes/' . $this->themeName . '/' . $src . '?v=' . $this->themeConfig['version'];
+                $scriptsHtml .= '<script type="' . $type . '" src="' . $scriptUrl . '"></script>';
+            }
+            else {
+                $scriptUrl = BASE_URL . '/themes/' . $this->themeName . '/' . $script . '?v=' . $this->themeConfig['version'];
+                $scriptsHtml .= '<script type="text/javascript" src="' . $scriptUrl . '"></script>';
+            }
         }
 
         return $scriptsHtml;
